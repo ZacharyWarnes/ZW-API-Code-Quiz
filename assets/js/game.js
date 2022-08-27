@@ -30,6 +30,7 @@ var questions = [
 //function for starting the game 
 
     //hide start screen
+    
 
     //display the first question
 
