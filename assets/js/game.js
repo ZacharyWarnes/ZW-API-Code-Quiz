@@ -2,8 +2,8 @@
 var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
 var currentQuestionEl = document.getElementById('questions');
-var userScoreEl = document.getElementById('userScore');
 var questionPosition= 0;
+var userScoreEl = document.getElementById('userScore');
 var timeInterval;
 
 
@@ -31,7 +31,7 @@ function countdown() {
             endGame();
         }
     }, 1000);
-
+console.log("hello");
 } 
 
 //This function ends the quiz when all questions have been answered or when the timer reached "0"
@@ -58,7 +58,7 @@ function endGame() {
     `
 var restartQuizEl= docuemnt.getElementById("restartQuiz");
 var loggedScoreEl= document.getElementById("loggedScore");
-restartQuizEl.addEventListener("click", gameStart)
+restartQuizEl.addEventListener("click", startGame);
 loggedScoreEl.addEventListener("click", function(event) {
     event.preventDefault();
     logHighScore(userScore);
@@ -69,36 +69,34 @@ loggedScoreEl.addEventListener("click", function(event) {
 //An array of questions for the quiz game
 var questionArray = [
     {
-        
         question: "What data type has the value of true or false in javascript?",
         answer: ["String", "Number", "Boolean", "Pizza"],
         correctAnswer: "Boolean" 
     },
         
     {
-        
         question: "The contents of a function should be wrapped in what?",
-        answer: ["parenthasis", "Square brackets", "Pizza", "Curly brackets"],
+        answer: ["Parenthasis", "Square brackets", "Pizza", "Curly brackets"],
         correctAnswer: "Curly brackets"
     },
         
-    // {
-        //question
-        //answer
-        //correct answer
-    // },
+    {
+        question: "What method can you use to target an element in your html text?",
+        answer: ["getElementbyId()", "addEventListener()", "preventDefault()", "makePizza()",],
+        correctAnswer: "getElementbyId()"
+    },
 
-     // {
-        //question
-        //answer
-        //correct answer
-    // },
+     {
+        question: "Inside which HTML element do we put the link to Javascript?",
+        answer: ["<js>", "<javascript>","<pizzascript>","<scrip>"],
+        correctAnswer: "<script>"
+    },
 
-     // {
-        //question
-        //answer
-        //correct answer
-    // },
+     {
+        question: "Which operator is used to assign a value to a variable?",
+        answer: ["-", "*", "+", "="],
+        correctAnswer: "="
+    },
 ];
 
 var questionTemplate = `<h2>//Questions</h2>
@@ -128,8 +126,10 @@ function displayCurrentQuestion () {
     var thirdAnswerEL = document.getElementById("answer3");
     var fourthAnswerEl = document.getElementById("answer4");
 
+    console.log(questionEL);
+
     //Show the question for template literal
-    questionEl.textContent = questionArray[questionPosition].question;
+    questionEl.textContent = currentQuestion.question;
 
     //Show answer options for template literal
     firstAnswerEl.textContent = "1. " + questionArray[questionPosition].answer[0];

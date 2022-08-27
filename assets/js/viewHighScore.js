@@ -10,6 +10,12 @@ function recordHighScore(userScore) {
     localStorage.setItem("initials", JSON.stringify(initials));
     highScores.push(userScore);
     highScoreInitials.push(initials);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
+
+    showHighScores();
+
+function showHighScores();
 
 
 
