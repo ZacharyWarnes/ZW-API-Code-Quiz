@@ -1,7 +1,9 @@
-// DECLARE elements for HTML
+// DECLARE element links for HTML
 var timerEL = document.getElementById('timer');
 var startButtonEl= docuemnt.getElementById('startbutton');
-
+var questionPosition= 0;
+var currentQuestion = questions[questionPosition];
+var timeLeft = 0;
 
 // DECLARE countdown in number
 
@@ -27,7 +29,7 @@ var questions = [
     },
 ];
 
-//function for starting the game 
+//function 'startGame' 
 
     //hide start screen
     
@@ -37,8 +39,21 @@ var questions = [
     //set the starting value of 'countdown'
 
     //start the timer
+function countdown() {
+    var timeLeft = 75;
+    var timeInterval = setInterval(function () {
+        timeLeft --;
+        timerEL.textContent = timeLeft;
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            endGame();
+        }
+    })
 
-//Function for selecting and answer
+} 
+        //IF countdown === 0 THEN endGame()
+
+//Function 'answerQuestion'
 
     // If the answer is wrong 
         
@@ -46,5 +61,7 @@ var questions = [
 
 //display the next question
 
+// displayCurrentQuestion();
 
 //Display Current question 
+// function displayCurrentQuestion
