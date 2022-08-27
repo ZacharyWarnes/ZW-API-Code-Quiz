@@ -127,7 +127,15 @@ function answerQuestion() {
 }
 
 
-//display the next question
+//This function moved to the next question after a choice is made 
+function newQuestion () {
+    if (questionPosition < questionArray.length && timeLeft > 0) {
+        displayCurrentQuestion(questionPosition);
+    } else {
+        endGame();
+    }
+}
+
 
 // displayCurrentQuestion();
 
