@@ -7,19 +7,6 @@ var userScoreEl = document.getElementById('userScore');
 var timeInterval;
 
 
-
-
-    //hide start screen
-    
-
-    //display the first question
-
-// 
-//     <div class="timer">
-//         <h2>//Timer</h2>
-//         <p id="countdown"></p>
-//     </div>`
-
 //This function starts the countdown timer and clears the countdown when we reach the end of the the game
 function countdown() {
     var timeLeft = 75;
@@ -99,25 +86,11 @@ var questionArray = [
     },
 ];
 
-var questionTemplate = `<h2>//Questions</h2>
-                 <h3 id="showQuestion">Test</h3>
-             </div>
-             <div class="answers">
-                 <h2>//Answers</h2>
-                 <button class="buttons" id="answer1" data-answer = "0"></button>
-                 <button class="buttons" id="answer2" data-answer = "1"></button>
-                 <button class="buttons" id="answer3" data-answer = "2"></button>
-                 <button class="buttons" id="answer4" data-answer = "3"></button>
-             </div>
-         </div>`  
+
 
 var currentQuestion = questionArray[questionPosition];
 
 function displayCurrentQuestion () {
-
-    //Clearing "questions" section of HTML before appending template variable
-    currentQuestionEl.innerHTML = '';
-    currentQuestionEl.append(questionTemplate);
 
     //Creating Elements for template literal
     var questionEl = document.getElementById("showQuestion");
@@ -125,8 +98,6 @@ function displayCurrentQuestion () {
     var secondAnswerEl = document.getElementById("answer2");
     var thirdAnswerEL = document.getElementById("answer3");
     var fourthAnswerEl = document.getElementById("answer4");
-
-    console.log(questionEL);
 
     //Show the question for template literal
     questionEl.textContent = currentQuestion.question;
@@ -152,7 +123,7 @@ function answerQuestion() {
         userAnswer.textContent = "Your Answer Is Correct";
         correctAnswer ++;
     } else {
-        timeLeft = timeLeft - 5;
+        timeLeft = (timeLeft - 5);
         userAnswer.textContent = "Your Answer Is Incorrect";
     }
     questionPosition++;
@@ -170,13 +141,45 @@ function newQuestion () {
     }
 }
 
+//This function starts the game and triggers the countdown timer
+function gameStart() {
+    
+    //Start the game at the position of the first question and reset the correctAnswer score 
+    questionPosition = 0;
+    correctAnswer = 0;
 
-//function gameStart() {
-// }
+    //hide the start button upon start
+    startButtonEl.style.display ='none';
+    //Appending question template literal to main page 
+
+    currentQuestionEl.innerHTML =
+    `<h2>Questions</h2>
+    <h3 id="showQuestion">Test</h3>
+</div>
+<div class="answers">
+    <h2>Answers</h2>
+    <button class="buttons" id="answer1" data-answer = "0"></button>
+    <button class="buttons" id="answer2" data-answer = "1"></button>
+    <button class="buttons" id="answer3" data-answer = "2"></button>
+    <button class="buttons" id="answer4" data-answer = "3"></button>
+</div>
+</div>` 
+;
+countdown();
+displayCurrentQuestion();
+
+// 
+//     <div class="timer">
+//         <h2>//Timer</h2>
+//         <p id="timer"></p>
+//     </div>`
+
+
+}
 
 //Display Current question 
 // function displayCurrentQuestion
 
 //function recordHighScore
 
-startButtonEl.addEventListener("click", displayCurrentQuestion);
+startButtonEl.addEventListener("click", gameStart);
