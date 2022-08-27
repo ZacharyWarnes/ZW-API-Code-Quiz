@@ -1,8 +1,7 @@
 // DECLARE element links for HTML
 var timerEL = document.getElementById('timer');
-var startButtonEl= docuemnt.getElementById('startbutton');
+var startButtonEl= document.getElementById('startButton');
 var questionPosition= 0;
-var currentQuestion = questionArray[questionPosition];
 var timeInterval;
 
 
@@ -19,17 +18,7 @@ var timeInterval;
 
     //display the first question
 
-// `<h2>//Question</h2>
-//             <h3 id="showQuestion">Test</h3>
-//         </div>
-//         <div class="answers">
-//             <h2>//Answers</h2>
-//             <button class="buttons" id="answer1" data-answer = "0"></button>
-//             <button class="buttons" id="answer2" data-answer = "1"></button>
-//             <button class="buttons" id="answer3"></button>
-//             <button class="buttons" id="answer4"></button>
-//         </div>
-//     </div>   
+// 
 //     <div class="timer">
 //         <h2>//Timer</h2>
 //         <p id="countdown"></p>
@@ -48,6 +37,8 @@ function countdown() {
     })
 
 } 
+
+//This function ends the quiz when all questions have been answered or when the timer reached "0"
 function endGame() {
     clearInterval(timeInterval);
 }
@@ -55,31 +46,44 @@ function endGame() {
 //An array of questions for the quiz game
 var questionArray = [
     {
-        id: 1,
+        
         question: "What data type has the value of true or false in javascript?",
         answer: ["String", "Number", "Boolean", "Pizza"],
         correctAnswer: "Boolean" 
     },
         
     {
-        id: 2,
+        
         question: "The contents of a function should be wrapped in what?",
         answer: ["parenthasis", "Square brackets", "Pizza", "Curly brackets"],
         correctAnswer: "Curly brackets"
     },
         
-    {
+    // {
         //question
         //answer
         //correct answer
-    },
+    // },
 ];
 
-function showQuestions (questionPosition) {
+var questionTemplate = `<h2>//Question</h2>
+                 <h3 id="showQuestion">Test</h3>
+             </div>
+             <div class="answers">
+                 <h2>//Answers</h2>
+                 <button class="buttons" id="answer1" data-answer = "0"></button>
+                 <button class="buttons" id="answer2" data-answer = "1"></button>
+             <button class="buttons" id="answer3" data-answer = "2"></button>
+                <button class="buttons" id="answer4" data-answer = "3"></button>
+             </div>
+         </div>`  
 
+var currentQuestion = questionArray[questionPosition];
+
+function displayCurrentQuestion () {
     //Creating Elements for template literal
     var questionEl = document.getElementById("showQuestion");
-    var firstAnswerEl = docuemnt.getElementById("answer1");
+    var firstAnswerEl = document.getElementById("answer1");
     var secondAnswerEl = document.getElementById("answer2");
     var thirdAnswerEL = document.getElementById("answer3");
     var fourthAnswerEl = document.getElementById("answer4");
@@ -88,12 +92,29 @@ function showQuestions (questionPosition) {
     questionEl.textContent = questionArray[questionPosition].question;
 
     //Show answer options for template literal
-    firstAnswerEl.textContent = "1. " + questionArray[questionPosition].answers[0];
-    secondAnswerEl.textContent = "2. " + questionArray[questionPosition].answers[1];
+    firstAnswerEl.textContent = "1. " + questionArray[questionPosition].answer[0];
+    secondAnswerEl.textContent = "2. " + questionArray[questionPosition].answer[1];
     thirdAnswerEL.textContent = "3. " + questionArray[questionPosition].answer[2];
     fourthAnswerEl.textContent = "4. " + questionArray[questionPosition].answer[3];
 
 
+    
+    //Adding a listener event to check if the answer is correct
+    firstAnswerEl.addEventListener("click", answerQuestion);
+    secondAnswerEl.addEventListener("click", answerQuestion);
+    thirdAnswerEL.addEventListener("click", answerQuestion);
+    fourthAnswerEl.addEventListener("click", answerQuestion);
+
+     
+}
+
+function answerQuestion() {
+    var userAnswer = this;
+    if (questionArray[questionPosition].answer[userAnswer.dataset.answer] == questionArray[questionPosition].correctAnswer) {
+        userAnswer.textContent = "Your Answer Is Correct";
+        correctAnswer ++;
+    }
+    
 }
 //Function 'answerQuestion'
 
@@ -109,3 +130,5 @@ function showQuestions (questionPosition) {
 // function displayCurrentQuestion
 
 //function recordHighScore
+
+startButtonEl.addEventListener("click", displayCurrentQuestion);
