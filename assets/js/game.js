@@ -2,17 +2,12 @@
 var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
 var currentQuestionEl = document.getElementById('questions');
+var userScoreEl = document.getElementById('userScore');
 var questionPosition= 0;
 var timeInterval;
 
 
-// DECLARE countdown in number
 
-// DECLARE questions by array list of objects
-
-
-
-//function 'startGame' 
 
     //hide start screen
     
@@ -25,7 +20,7 @@ var timeInterval;
 //         <p id="countdown"></p>
 //     </div>`
 
-    //start the timer
+//This function starts the countdown timer and clears the countdown when we reach the end of the the game
 function countdown() {
     var timeLeft = 75;
     timeInterval = setInterval(function () {
@@ -41,7 +36,34 @@ function countdown() {
 
 //This function ends the quiz when all questions have been answered or when the timer reached "0"
 function endGame() {
-    clearInterval(timeInterval);
+    var userScore = (correctAnswer * 20);
+    //clear scores section of html before template literal is added. Template literal populates user score and gives option to save score and start again 
+    userScoreEl.innerHTML = '';
+    userScoreEl.innerHTML = `
+    <div>
+      <h2>How did you do?</h2>
+        <p>${userScore}</p>
+    </div>
+    <div>
+        <form id=scorerInitials method= POST>
+          <label for ="scorerInitials">Enter Your Initials:</label><br>
+          <input type="text" placeholder="ex: ZW" name= "scorerInitials" id= "scorerInitials"/><br><br>
+          <input type ="submit" id= "loggedScore"value="submit"/>
+        </form>
+    </div>
+    <br><br>
+    <div>
+        <button class="buttons" id="restartQuiz">Go Again!</button>
+    </div>
+    `
+var restartQuizEl= docuemnt.getElementById("restartQuiz");
+var loggedScoreEl= document.getElementById("loggedScore");
+restartQuizEl.addEventListener("click", gameStart)
+loggedScoreEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    logHighScore(userScore);
+});
+
 }
 
 //An array of questions for the quiz game
@@ -65,9 +87,21 @@ var questionArray = [
         //answer
         //correct answer
     // },
+
+     // {
+        //question
+        //answer
+        //correct answer
+    // },
+
+     // {
+        //question
+        //answer
+        //correct answer
+    // },
 ];
 
-var questionTemplate = `<h2>//Question</h2>
+var questionTemplate = `<h2>//Questions</h2>
                  <h3 id="showQuestion">Test</h3>
              </div>
              <div class="answers">
@@ -137,7 +171,8 @@ function newQuestion () {
 }
 
 
-// displayCurrentQuestion();
+//function gameStart() {
+// }
 
 //Display Current question 
 // function displayCurrentQuestion
