@@ -3,13 +3,14 @@ var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
 var currentQuestionEl = document.getElementById('questions');
 var questionPosition= 0;
+var timeLeft = 0;
 var userScoreEl = document.getElementById('userScore');
 var timeInterval;
 
 
 //This function starts the countdown timer and clears the countdown when we reach the end of the the game
 function countdown() {
-    var timeLeft = 75;
+    timeLeft = 75;
     timeInterval = setInterval(function () {
         timeLeft --;
         timerEL.textContent = timeLeft;
@@ -43,7 +44,7 @@ function endGame() {
         <button class="buttons" id="restartQuiz">Go Again!</button>
     </div>
     `
-var restartQuizEl= docuemnt.getElementById("restartQuiz");
+var restartQuizEl= document.getElementById("restartQuiz");
 var loggedScoreEl= document.getElementById("loggedScore");
 restartQuizEl.addEventListener("click", startGame);
 loggedScoreEl.addEventListener("click", function(event) {
@@ -123,11 +124,11 @@ function answerQuestion() {
         userAnswer.textContent = "Your Answer Is Correct";
         correctAnswer ++;
     } else {
-        timeLeft = (timeLeft - 5);
+        timeLeft= timeLeft - 5;
         userAnswer.textContent = "Your Answer Is Incorrect";
     }
     questionPosition++;
-    setTimeout(nextQuestion, 1000);
+    setTimeout(newQuestion, 1000);
     
 }
 
@@ -166,7 +167,7 @@ function gameStart() {
 </div>` 
 ;
 countdown();
-displayCurrentQuestion();
+displayCurrentQuestion(questionPosition);
 
 // 
 //     <div class="timer">
