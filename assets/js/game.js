@@ -1,6 +1,7 @@
 // DECLARE element links for HTML
 var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
+var currentQuestionEl = document.getElementById('questions');
 var questionPosition= 0;
 var timeInterval;
 
@@ -34,7 +35,7 @@ function countdown() {
             clearInterval(timeInterval);
             endGame();
         }
-    })
+    }, 1000);
 
 } 
 
@@ -73,14 +74,19 @@ var questionTemplate = `<h2>//Question</h2>
                  <h2>//Answers</h2>
                  <button class="buttons" id="answer1" data-answer = "0"></button>
                  <button class="buttons" id="answer2" data-answer = "1"></button>
-             <button class="buttons" id="answer3" data-answer = "2"></button>
-                <button class="buttons" id="answer4" data-answer = "3"></button>
+                 <button class="buttons" id="answer3" data-answer = "2"></button>
+                 <button class="buttons" id="answer4" data-answer = "3"></button>
              </div>
          </div>`  
 
 var currentQuestion = questionArray[questionPosition];
 
 function displayCurrentQuestion () {
+
+    //Clearing "questions" section of HTML before appending template variable
+    currentQuestionEl.innerHTML = '';
+    currentQuestionEl.append(questionTemplate);
+
     //Creating Elements for template literal
     var questionEl = document.getElementById("showQuestion");
     var firstAnswerEl = document.getElementById("answer1");
@@ -97,8 +103,6 @@ function displayCurrentQuestion () {
     thirdAnswerEL.textContent = "3. " + questionArray[questionPosition].answer[2];
     fourthAnswerEl.textContent = "4. " + questionArray[questionPosition].answer[3];
 
-
-    
     //Adding a listener event to check if the answer is correct
     firstAnswerEl.addEventListener("click", answerQuestion);
     secondAnswerEl.addEventListener("click", answerQuestion);
@@ -107,20 +111,21 @@ function displayCurrentQuestion () {
 
      
 }
-
+// This function checks your answer selection against the correct answer, interacts with the countdown timer for incorrect answers
 function answerQuestion() {
     var userAnswer = this;
     if (questionArray[questionPosition].answer[userAnswer.dataset.answer] == questionArray[questionPosition].correctAnswer) {
         userAnswer.textContent = "Your Answer Is Correct";
         correctAnswer ++;
+    } else {
+        timeLeft = timeLeft - 5;
+        userAnswer.textContent = "Your Answer Is Incorrect";
     }
+    questionPosition++;
+    setTimeout(nextQuestion, 1000);
     
 }
-//Function 'answerQuestion'
 
-    // If the answer is wrong 
-        
-        //THEN we need to subtract from 'countdown' 
 
 //display the next question
 
