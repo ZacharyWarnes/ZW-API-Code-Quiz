@@ -46,11 +46,9 @@ function endGame() {
     `
 var restartQuizEl= document.getElementById("restartQuiz");
 var loggedScoreEl= document.getElementById("loggedScore");
-restartQuizEl.addEventListener("click", startGame);
-loggedScoreEl.addEventListener("click", function(event) {
-    event.preventDefault();
-    logHighScore(userScore);
-});
+restartQuizEl.addEventListener("click", gameStart);
+loggedScoreEl.addEventListener("click", recordHighScore(userScore));
+
 
 }
 
@@ -76,7 +74,7 @@ var questionArray = [
 
      {
         question: "Inside which HTML element do we put the link to Javascript?",
-        answer: ["<js>", "<javascript>","<pizzascript>","<scrip>"],
+        answer: ["<js>", "<javascript>","<pizzascript>","<script>"],
         correctAnswer: "<script>"
     },
 
@@ -101,7 +99,7 @@ function displayCurrentQuestion () {
     var fourthAnswerEl = document.getElementById("answer4");
 
     //Show the question for template literal
-    questionEl.textContent = currentQuestion.question;
+    questionEl.textContent = questionArray[questionPosition].question;
 
     //Show answer options for template literal
     firstAnswerEl.textContent = "1. " + questionArray[questionPosition].answer[0];
@@ -144,7 +142,7 @@ function newQuestion () {
 
 //This function starts the game and triggers the countdown timer
 function gameStart() {
-    
+    userScoreEl.innerHTML= '';
     //Start the game at the position of the first question and reset the correctAnswer score 
     questionPosition = 0;
     correctAnswer = 0;
@@ -184,3 +182,4 @@ displayCurrentQuestion(questionPosition);
 //function recordHighScore
 
 startButtonEl.addEventListener("click", gameStart);
+// restartQuizEl.addEventListener("click", gameStart);

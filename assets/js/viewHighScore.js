@@ -13,10 +13,8 @@ function recordHighScore(userScore) {
     localStorage.setItem("highScores", JSON.stringify(highScores));
     localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
 
-    showHighScores();
+}
 
-function showHighScores();
-
-
-
+function showHighScores() {
+    
 }
