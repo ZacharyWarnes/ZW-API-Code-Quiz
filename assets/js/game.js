@@ -43,11 +43,12 @@ function endGame() {
     <div>
         <button class="buttons" id="restartQuiz">Go Again!</button>
     </div>
-    `
+   `
+var initials = document.getElementById("scorerInitials").value;
 var restartQuizEl= document.getElementById("restartQuiz");
 var loggedScoreEl= document.getElementById("loggedScore");
 restartQuizEl.addEventListener("click", gameStart);
-loggedScoreEl.addEventListener("click", recordHighScore(userScore));
+loggedScoreEl.addEventListener("click", recordHighScore(userScore, initials));
 
 
 }
@@ -182,4 +183,3 @@ displayCurrentQuestion(questionPosition);
 //function recordHighScore
 
 startButtonEl.addEventListener("click", gameStart);
-// restartQuizEl.addEventListener("click", gameStart);
