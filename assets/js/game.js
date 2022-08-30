@@ -19,7 +19,7 @@ function countdown() {
             endGame();
         }
     }, 1000);
-console.log("hello");
+
 } 
 
 //This function ends the quiz when all questions have been answered or when the timer reached "0"
@@ -36,7 +36,7 @@ function endGame() {
         <form id=scorerInitials method= POST>
           <label for ="scorerInitials">Enter Your Initials:</label><br>
           <input type="text" placeholder="ex: ZW" name= "scorerInitials" id= "initials"/><br><br>
-          <input type ="submit" id= "submitScore"value="submit"/>
+          <input type ="submit" class="buttons" id= "submitScore" value="submit"/>
         </form>
     </div> 
     <br><br>
@@ -44,12 +44,29 @@ function endGame() {
         <button class="buttons" id="restartQuiz">Go Again!</button>
     </div>
    `
-var initials = document.getElementById("initials").value;
+
 var restartQuizEl= document.getElementById("restartQuiz");
 var loggedScoreEl= document.getElementById("submitScore");
 restartQuizEl.addEventListener("click", gameStart);
-loggedScoreEl.addEventListener("click", recordHighScore(userScore, initials));
+loggedScoreEl.addEventListener("click", function(event){
+    var initials = document.getElementById("initials").value;
+    event.preventDefault();
+    recordHighScore(userScore,initials);
+} );
 
+
+}
+
+//This function will record the users high score and add to local storage
+function recordHighScore(userScore, initials) {
+    console.log(userScore, initials)
+//This bit sets the entered values to strings and then pushes them to and empty array for scores and user initials to be used in the highscores page
+    localStorage.setItem("userScore",JSON.stringify(userScore));
+    localStorage.setItem("initials", JSON.stringify(initials));
+    highScores.push(userScore);
+    highScoreInitials.push(initials);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
 
 }
 
