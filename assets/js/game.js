@@ -35,18 +35,18 @@ function endGame() {
     <div>
         <form id=scorerInitials method= POST>
           <label for ="scorerInitials">Enter Your Initials:</label><br>
-          <input type="text" placeholder="ex: ZW" name= "scorerInitials" id= "scorerInitials"/><br><br>
-          <input type ="submit" id= "loggedScore"value="submit"/>
+          <input type="text" placeholder="ex: ZW" name= "scorerInitials" id= "initials"/><br><br>
+          <input type ="submit" id= "submitScore"value="submit"/>
         </form>
-    </div>
+    </div> 
     <br><br>
     <div>
         <button class="buttons" id="restartQuiz">Go Again!</button>
     </div>
    `
-var initials = document.getElementById("scorerInitials").value;
+var initials = document.getElementById("initials").value;
 var restartQuizEl= document.getElementById("restartQuiz");
-var loggedScoreEl= document.getElementById("loggedScore");
+var loggedScoreEl= document.getElementById("submitScore");
 restartQuizEl.addEventListener("click", gameStart);
 loggedScoreEl.addEventListener("click", recordHighScore(userScore, initials));
 
@@ -157,7 +157,7 @@ function gameStart() {
     <h3 id="showQuestion">Test</h3>
 </div>
 <div class="answers">
-    <h2>Answers</h2>
+    <h2>Choose an Answer:</h2>
     <button class="buttons" id="answer1" data-answer = "0"></button>
     <button class="buttons" id="answer2" data-answer = "1"></button>
     <button class="buttons" id="answer3" data-answer = "2"></button>
@@ -165,21 +165,13 @@ function gameStart() {
 </div>
 </div>` 
 ;
+
+//Calling countdown function to start the timer and displayCurrentQuestion function at gameStart
 countdown();
 displayCurrentQuestion(questionPosition);
 
-// 
-//     <div class="timer">
-//         <h2>//Timer</h2>
-//         <p id="timer"></p>
-//     </div>`
-
-
 }
 
-//Display Current question 
-// function displayCurrentQuestion
 
-//function recordHighScore
 
 startButtonEl.addEventListener("click", gameStart);

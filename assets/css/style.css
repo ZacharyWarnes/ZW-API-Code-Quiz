@@ -1,0 +1,25 @@
+
+* {
+    background-color: black;
+    color: bisque;
+    
+    
+}
+
+.timerSection {
+    text-align: center;
+    font-size: 32px;
+    color: chartreuse;
+}
+ 
+.buttons {
+    border-radius: 3px;
+    background-color: aliceblue;
+    color: blueviolet;
+    font-size: 20px;
+    padding: 12px 28px;
+}
+
+.quizQuestions {
+    text-align: center;
+}
