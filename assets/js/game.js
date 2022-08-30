@@ -1,11 +1,14 @@
 // DECLARE element links for HTML
 var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
+var scoreButtonEl= document.getElementById('scoreButton');
 var currentQuestionEl = document.getElementById('questions');
 var questionPosition= 0;
 var timeLeft = 0;
 var userScoreEl = document.getElementById('userScore');
 var timeInterval;
+var highScores = [];
+var highScoreInitials = [];
 
 
 //This function starts the countdown timer and clears the countdown when we reach the end of the the game
@@ -67,8 +70,10 @@ function recordHighScore(userScore, initials) {
     highScoreInitials.push(initials);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
+    setTimeout(1000,highScoreTable);
 
 }
+
 
 //An array of questions for the quiz game
 var questionArray = [
@@ -188,7 +193,5 @@ countdown();
 displayCurrentQuestion(questionPosition);
 
 }
-
-
 
 startButtonEl.addEventListener("click", gameStart);
