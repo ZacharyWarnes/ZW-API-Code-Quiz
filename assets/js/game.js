@@ -1,14 +1,12 @@
 // DECLARE element links for HTML
 var timerEL = document.getElementById('timer');
 var startButtonEl= document.getElementById('startButton');
-var scoreButtonEl= document.getElementById('scoreButton');
 var currentQuestionEl = document.getElementById('questions');
 var questionPosition= 0;
 var timeLeft = 0;
 var userScoreEl = document.getElementById('userScore');
 var timeInterval;
-var highScores = [];
-var highScoreInitials = [];
+
 
 
 //This function starts the countdown timer and clears the countdown when we reach the end of the the game
@@ -62,7 +60,7 @@ loggedScoreEl.addEventListener("click", function(event){
 
 //This function will record the users high score and add to local storage
 function recordHighScore(userScore, initials) {
-    console.log(userScore, initials)
+    
 //This bit sets the entered values to strings and then pushes them to and empty array for scores and user initials to be used in the highscores page
     localStorage.setItem("userScore",JSON.stringify(userScore));
     localStorage.setItem("initials", JSON.stringify(initials));
@@ -71,7 +69,7 @@ function recordHighScore(userScore, initials) {
     localStorage.setItem("highScores", JSON.stringify(highScores));
     localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
     setTimeout(1000,highScoreTable);
-
+    console.log(userScore, initials)
 }
 
 

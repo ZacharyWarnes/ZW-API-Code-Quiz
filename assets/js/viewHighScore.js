@@ -1,7 +1,11 @@
 var highScoresEl = document.getElementById('highScores');
+var scoreButtonEl= document.getElementById('scoreButton');
+var highScores = [];
+var highScoreInitials = [];
 
 //This function will create the template literal for the highscores table
 function highScoreTable() {
+    console.log(highScores,highScoreInitials);
     highScoresEl.innerHTML= `
     <h2>High Scores</h2>
     <div class="tableStyle">
@@ -14,7 +18,8 @@ function highScoreTable() {
     </div>
     <br>
     <br>
-    <div> <button class= "buttons" id= "clearHighScore>Clear Table</button>
+    <div>
+       <button class= "buttons" id= "clearHighScore>Clear Table</button>
     </div>
     `;
 
@@ -31,3 +36,5 @@ scoresTable.appendChild(tableRow);
 
 } 
 
+
+scoreButtonEl.addEventListener("click", highScoreTable);
