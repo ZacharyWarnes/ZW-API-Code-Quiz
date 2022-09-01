@@ -29,7 +29,7 @@ function countdown() {
 function endGame() {
     var userScore = (correctAnswer * 20);
     //clear scores section of html before template literal is added. Template literal populates user score and gives option to save score and start again 
-    userScoreEl.innerHTML = '';
+    // userScoreEl.innerHTML = '';
     userScoreEl.innerHTML = `
     <div>
       <h2>How did you do?</h2>
@@ -55,10 +55,9 @@ loggedScoreEl.addEventListener("click", function(event){
     var initials = document.getElementById("initials").value;
     event.preventDefault();
     recordHighScore(userScore,initials);
+    
 } );
 
-
-}
 
 //This function will record the users high score and add to local storage
 function recordHighScore(userScore, initials) {
