@@ -34,13 +34,14 @@ for (i=0; i<highScores.length; i++) {
     `;
 scoresTable.appendChild(tableRow);
 }
+//creating a variable to target the clear high scores button in my template literal
 var clearTableEl= document.getElementById("clearHighScore");
 clearTableEl.addEventListener("click", clearTable);
 
 } 
-
+// function clears the contents of the high scores page when the clear table button is pushed
 function clearTable() {
-    localStorage.clear();
+    highScoresEl.innerHTML= "";
 }
 
 scoreButtonEl.addEventListener("click", highScoreTable);
