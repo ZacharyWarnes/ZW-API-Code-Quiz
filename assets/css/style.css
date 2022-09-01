@@ -24,3 +24,19 @@
     text-align: center;
 }
 
+.scoresContainer {
+    text-align: center;
+    justify-content: center;
+
+}
+
+.tableStyle {
+    width: 50%;
+    text-align: center;
+    border: 1px;
+    background-color: chartreuse;
+    font-size: 32px;
+    padding: 1px;
+    margin: auto;
+    
+}

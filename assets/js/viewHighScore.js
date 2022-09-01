@@ -10,18 +10,17 @@ function highScoreTable() {
     console.log(highScores, highScoreInitials);
     highScoresEl.innerHTML= `
     <h2>High Scores</h2>
-    <div class="tableStyle">
-    <table id="scoresTable">
+    <div>
+    <table id="scoresTable" class="tableStyle">
         <tr>
-            <th>User</th>
-            <th>Score</th>
+            <th>User:</th>
+            <th>Score:</th>
         </tr>
     </table>
-    </div>
-    <br>
     <br>
     <div>
-       <button class= "buttons" id= "clearHighScore>Clear Table</button>
+       <button class= "buttons" id="clearHighScore">Clear Table</button>
+    </div>
     </div>
     `;
 
