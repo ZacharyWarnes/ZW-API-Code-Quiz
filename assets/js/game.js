@@ -58,6 +58,7 @@ loggedScoreEl.addEventListener("click", function(event){
     
 } );
 
+}
 
 //This function will record the users high score and add to local storage
 function recordHighScore(userScore, initials) {
