@@ -18,7 +18,7 @@ This web application is a simple quiz game of 5 questions that features a countd
 
 ## **Installation**
 
-In order to install this application to your local machine. You can clone down this repository in to your preferred code editor and open a live server in the index.html file. You can also access the application by clicking this link to be taken to the deployed site: [PLAY!] 
+In order to install this application to your local machine. You can clone down this repository in to your preferred code editor and open a live server in the index.html file. You can also access the application by clicking this link to be taken to the deployed site: [PLAY!](https://zacharywarnes.github.io/ZW-API-Code-Quiz/) 
 
 
 ## **Instructions**
