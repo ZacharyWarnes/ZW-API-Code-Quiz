@@ -3,6 +3,7 @@ var scoreButtonEl= document.getElementById('scoreButton');
 
 
 
+
 //This function will create the template literal for the highscores table
 function highScoreTable() {
     highScores = JSON.parse(localStorage.getItem("highScores"));
@@ -32,10 +33,14 @@ for (i=0; i<highScores.length; i++) {
     <td>${highScores[i]}</td>
     `;
 scoresTable.appendChild(tableRow);
-
 }
+var clearTableEl= document.getElementById("clearHighScore");
+clearTableEl.addEventListener("click", clearTable);
 
 } 
 
+function clearTable() {
+    localStorage.clear();
+}
 
 scoreButtonEl.addEventListener("click", highScoreTable);

@@ -13,12 +13,19 @@
 }
  
 .buttons {
-    border-radius: 3px;
+    border-radius: 50%;
     background-color: aliceblue;
     color: blueviolet;
     font-size: 20px;
     padding: 12px 28px;
 }
+
+.buttons:hover {
+    background-color: blueviolet;
+    color: aliceblue;
+
+}
+
 
 .quizQuestions {
     text-align: center;
