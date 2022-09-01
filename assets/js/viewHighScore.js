@@ -3,6 +3,7 @@ var scoreButtonEl= document.getElementById('scoreButton');
 var highScores = [];
 var highScoreInitials = [];
 
+
 //This function will create the template literal for the highscores table
 function highScoreTable() {
     console.log(highScores,highScoreInitials);

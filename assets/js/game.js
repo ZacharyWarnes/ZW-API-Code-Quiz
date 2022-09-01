@@ -9,6 +9,7 @@ var timeInterval;
 
 
 
+
 //This function starts the countdown timer and clears the countdown when we reach the end of the the game
 function countdown() {
     timeLeft = 75;
@@ -69,8 +70,8 @@ function recordHighScore(userScore, initials) {
     localStorage.setItem("highScores", JSON.stringify(highScores));
     localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
     setTimeout(1000,highScoreTable);
-    console.log(userScore, initials)
-}
+   
+};
 
 
 //An array of questions for the quiz game
