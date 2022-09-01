@@ -1,12 +1,13 @@
 var highScoresEl = document.getElementById('highScores');
 var scoreButtonEl= document.getElementById('scoreButton');
-var highScores = [];
-var highScoreInitials = [];
+
 
 
 //This function will create the template literal for the highscores table
 function highScoreTable() {
-    console.log(highScores,highScoreInitials);
+    highScores = JSON.parse(localStorage.getItem("highScores"));
+    highScoreInitials = JSON.parse(localStorage.getItem("highScoreInitials"));
+    console.log(highScores, highScoreInitials);
     highScoresEl.innerHTML= `
     <h2>High Scores</h2>
     <div class="tableStyle">

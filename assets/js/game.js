@@ -6,7 +6,8 @@ var questionPosition= 0;
 var timeLeft = 0;
 var userScoreEl = document.getElementById('userScore');
 var timeInterval;
-
+var highScores = [];
+var highScoreInitials = [];
 
 
 
@@ -69,7 +70,7 @@ function recordHighScore(userScore, initials) {
     highScoreInitials.push(initials);
     localStorage.setItem("highScores", JSON.stringify(highScores));
     localStorage.setItem("highScoreInitials", JSON.stringify(highScoreInitials));
-    setTimeout(1000,highScoreTable);
+    setTimeout(1000,highScoreTable(highScores,highScoreInitials));
    
 };
 
